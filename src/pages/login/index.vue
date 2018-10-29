@@ -7,7 +7,18 @@
 
 <script>
 export default {
-  
+  name: 'login',
+  data() {
+    return {
+
+    }
+  },
+  created() {
+
+  },
+  mounted() {
+    
+  }
 }
 </script>
 

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <p>111</p>
     <router-view/>
   </div>
 </template>
@@ -28,8 +27,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  & p {
-    color: red
-  }
 }
 </style>
