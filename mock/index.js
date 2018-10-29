@@ -1,21 +1,26 @@
 import Mock from 'mockjs'
 
-// 修复在使用 MockJS 情况下，设置 withCredentials = true，且未被拦截的跨域请求丢失 Cookies 的问题
-// https://github.com/nuysoft/Mock/issues/300
-Mock.XHR.prototype.proxy_send = Mock.XHR.prototype.send
-Mock.XHR.prototype.send = function() {
-  if (this.custom.xhr) {
-    this.custom.xhr.withCredentials = true
-  }
-  this.proxy_send(...arguments)
-}
-
-// Mock.setup({
-//   timeout: '350-600'
-// })
+let usersListData = Mock.mock({
+  'data|80-100': [
+    {
+      id: '@id',
+      name: '@name',
+      nickName: '@last',
+      phone: /^1[34578]\d{9}$/,
+      'age|11-99': 1,
+      address: '@county(true)',
+      isMale: '@boolean',
+      email: '@email',
+      createTime: '@datetime',
+      avatar () {
+        return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.nickName.substr(0, 1))
+      },
+    },
+  ],
+})
 
 // 登录相关
-Mock.mock(/\/login\/login/, 'post', [1,2,3,4,5,])
-Mock.mock(/\/login\/logout/, 'get', [1,2,3,4,5,])
+Mock.mock(/\/login\/login/, 'post', usersListData)
+Mock.mock(/\/login\/logout/, 'get', usersListData)
 
 export default Mock
