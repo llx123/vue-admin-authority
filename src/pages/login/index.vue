@@ -1,32 +1,46 @@
 <template>
   <div class="login-container">
-    Login
-    <a>aaaa</a>
+    <p @click="doLogin">11</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'login',
-  data() {
+  name: 'Login',  
+  data() {    
     return {
-
+      
     }
   },
   created() {
-
+    
   },
   mounted() {
+    setTimeout(()=>{
+      
+    })
+  },
+  destroyed() {
     
+  },
+  methods: {
+    doLogin() {
+      this.axios.get('/login/logout', {
+        username: '222',
+        password: '222'
+      }).then(res=>{
+        console.log(res.data)
+      })
+    }
   }
 }
 </script>
 
 <style lang="postcss" scoped>
-.login-container {
-  color: blue;
-  & a {
-    color: red
-  }
+:root {
+  --red: red
+}
+p {
+  color: var(--red)
 }
 </style>
