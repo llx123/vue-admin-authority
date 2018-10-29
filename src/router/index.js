@@ -6,8 +6,7 @@ Vue.use(Router)
 export const routes = [
   {
     path: '/login',
-    component: () => import('@/pages/login/index'),
-    hidden: true
+    component: () => import('@/pages/login/index')
   },
 ]
 
