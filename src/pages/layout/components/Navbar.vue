@@ -26,7 +26,7 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('LogOut').then(() => {
-        location.reload()
+        window.location.reload()
       })
     }
   }
@@ -41,6 +41,7 @@ export default {
   & .right-menu {
     float: right;
     height: 100%;
+    background: red;
     &:focus{
      outline: none;
     }

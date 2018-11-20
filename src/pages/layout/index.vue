@@ -1,12 +1,15 @@
 <template>
   <div>
-    <navbar />
-    <content-main />
+    <side-bar />
+    <div class="main-container">
+      <navbar />
+      <content-main />
+    </div>
   </div>
 </template>
 
 <script>
-import { Navbar, ContentMain } from './components'
+import { Navbar, ContentMain, SideBar } from './components'
 export default {
   data() {
     return {
@@ -16,6 +19,7 @@ export default {
   components: {
     Navbar,
     ContentMain,
+    SideBar,
   }
 }
 </script>
