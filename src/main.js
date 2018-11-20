@@ -7,6 +7,7 @@ import axios from 'axios'
 
 import 'element-ui/lib/theme-chalk/index.css'
 import '../mock/index.js'
+import './permission.js'
 
 Vue.use(Element)
 Vue.prototype.axios = axios

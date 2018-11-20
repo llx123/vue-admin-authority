@@ -1,4 +1,4 @@
-import { loginByUsername, logout, getUserInfo } from '@/services/login'
+import { doLogin, logout, getUserInfo } from '@/services/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 const user = {
@@ -11,9 +11,6 @@ const user = {
     avatar: '',
     introduction: '',
     roles: [],
-    setting: {
-      articlePlatform: []
-    }
   },
 
   mutations: {
@@ -25,9 +22,6 @@ const user = {
     },
     SET_INTRODUCTION: (state, introduction) => {
       state.introduction = introduction
-    },
-    SET_SETTING: (state, setting) => {
-      state.setting = setting
     },
     SET_STATUS: (state, status) => {
       state.status = status
@@ -45,10 +39,11 @@ const user = {
 
   actions: {
     // 用户名登录
-    LoginByUsername({ commit }, userInfo) {
+    doLogin({ commit }, userInfo) {
       const username = userInfo.username.trim()
+      commit('SET_NAME', username)
       return new Promise((resolve, reject) => {
-        loginByUsername(username, userInfo.password).then(response => {
+        doLogin(username, userInfo.password).then(response => {
           const data = response.data
           commit('SET_TOKEN', data.token)
           setToken(response.data.token)
@@ -73,8 +68,7 @@ const user = {
           } else {
             reject('getInfo: roles must be a non-null array !')
           }
-
-          commit('SET_NAME', data.name)
+          commit('SET_NAME', data.username)
           commit('SET_AVATAR', data.avatar)
           commit('SET_INTRODUCTION', data.introduction)
           resolve(response)
