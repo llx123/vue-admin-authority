@@ -19,12 +19,32 @@ export default {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  & .elLayout {
+    & .el-scrollbar {
+      & .scrollbar-wrapper {
+        overflow-x: hidden !important;
+        & .el-scrollbar__view {
+          height: 100%;
+        }
+      }
+    }
+  }
+  & .openBar {
+    & .main-content{
+      margin-left: 192px;
+    }
+  }
+  & .closeBar {
+    & .main-content{
+      margin-left: 56px;
+    }
+  }
 }
 </style>
