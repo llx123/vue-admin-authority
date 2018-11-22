@@ -41,7 +41,6 @@ export default {
   & .right-menu {
     float: right;
     height: 100%;
-    background: red;
     &:focus{
      outline: none;
     }

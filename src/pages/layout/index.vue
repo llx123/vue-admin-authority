@@ -33,13 +33,15 @@ export default {
 .elLayout {
   & .el-scrollbar {
     bottom: 0;
-    font-size: 0;
     height: 100%;
     left: 0;
     overflow: hidden;
     position: fixed;
     top: 0;
     transition: width .28s;
+  }
+  & .main-content {
+    transition: margin-left .28s;
   }
 }
 .openBar {

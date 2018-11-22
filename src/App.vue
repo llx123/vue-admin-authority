@@ -21,6 +21,7 @@ export default {
 
 <style lang="postcss">
 #app {
+  margin-top: -8px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

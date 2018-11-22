@@ -14,7 +14,7 @@
       }
     },
     mounted() {
-      
+      console.log(this.$store)
     },
     computed: {
       ...mapGetters([

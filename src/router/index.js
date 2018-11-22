@@ -33,9 +33,14 @@ export const constantRouterMap = [
         component: () => import('@/pages/dashboard/index'),
         name: 'Dashboard',
         meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
-      }
+      },
+      {
+        path: '/404',
+        component: () => import('@/pages/errors/404'),
+        hidden: true
+      },
     ]
-  }
+  },
 ]
 
 export default new Router({
@@ -44,6 +49,18 @@ export default new Router({
   routes: constantRouterMap
 })
 
-export const asyncRouterMap = [
-  
+export const routeElimination = [ // 路由除权
+  {
+    path: '/user',
+    component: Layout,
+    meta: { title: 'user', icon: 'dashboard', roles: ['admin'] },
+    children: [
+      {
+        path: '',
+        component: () => import('@/pages/user/index'),
+        name: 'user',
+        meta: { title: 'user', icon: 'dashboard', roles: ['admin'] }
+      }
+    ]
+  }
 ]

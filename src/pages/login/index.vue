@@ -69,7 +69,8 @@ export default {
   watch: {
     $route: {
       handler: function(route) {
-        this.redirect = route.query && route.query.redirect
+        // 如果用户用404跳转到登录页，则登陆后返回到dashboard页面
+        this.redirect = route.query && route.query.redirect === '/404' ? '/dashboard' : route.query.redirect
       },
       immediate: true
     }
