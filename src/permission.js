@@ -1,14 +1,13 @@
 import router from './router'
 import store from './store'
 import { Message } from 'element-ui'
-import NProgress from 'nprogress' 
+import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { getToken } from '@/utils/auth'
 
-NProgress.configure({ showSpinner: false })
-
+const whiteList = ['/login']
 // 增加全局的导航守卫
-router.beforeEach((to, from, next) => {  
+router.beforeEach((to, from, next) => {
   NProgress.start()
   if (getToken()) {
     /* has token*/
@@ -23,11 +22,11 @@ router.beforeEach((to, from, next) => {
             // begin            
             const { routes, addRoutes } = store.getters
             const newRoutes = routes.concat(addRoutes)
-            let arrList = ['/dashboard','/redirect','/404','/'] // 允许访问的所有路径
-            newRoutes.map(item=>arrList.push(item.path))
+            let arrList = ['/dashboard', '/redirect', '/404', '/'] // 允许访问的所有路径
+            newRoutes.map(item => arrList.push(item.path))
             let path = to.path
-            let hasPath = arrList.some(item=>item === path) // 权限验证
-            if(!hasPath){
+            let hasPath = arrList.some(item => item === path) // 权限验证
+            if (!hasPath) {
               next({ path: '/404' })
               NProgress.done()
               return false  // 解决更改path空白页问题
@@ -42,15 +41,15 @@ router.beforeEach((to, from, next) => {
             next({ path: '/' })
           })
         })
-      } else {        
+      } else {
         const { routes, addRoutes } = store.getters
         const newRoutes = routes.concat(addRoutes)
-        let arrList = ['/dashboard','/redirect','/404','/'] // 允许访问的所有路径
-        newRoutes.map(item=>arrList.push(item.path))
+        let arrList = ['/dashboard', '/redirect', '/404', '/'] // 允许访问的所有路径
+        newRoutes.map(item => arrList.push(item.path))
         let path = to.path
-        let hasPath = arrList.some(item=>item === path) // 权限验证
+        let hasPath = arrList.some(item => item === path) // 权限验证
 
-        if(!hasPath){
+        if (!hasPath) {
           next({ path: '/404' })
           NProgress.done()
           return false  // 解决更改path空白页问题
@@ -60,11 +59,16 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    next(`/login?redirect=${to.path}`)
-    NProgress.done()
+    // 若访问路径不在白名单且没token 执行else到登录页
+    if (whiteList.some(item => item === to.path)) {
+      next()
+    } else {
+      next(`/login?redirect=${to.path}`)
+      NProgress.done()
+    }
   }
 })
 
 router.afterEach(() => {
-  NProgress.done() // finish progress bar
+  NProgress.done() // end
 })
