@@ -10,7 +10,6 @@ export const constantRouterMap = [
   {
     path: '/redirect',
     component: Layout,
-    hidden: true,
     children: [
       {
         path: '/redirect/:path*',
@@ -21,23 +20,23 @@ export const constantRouterMap = [
   {
     path: '/login',
     component: () => import('@/pages/login/index'),
-    hidden: true
   },
   {
     path: '',
     component: Layout,
     redirect: 'dashboard',
+    meta: {single: true},
     children: [
       {
-        path: 'dashboard',
+        path: '/dashboard',
         component: () => import('@/pages/dashboard/index'),
+        show: true,
         name: 'Dashboard',
         meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
       },
       {
         path: '/404',
         component: () => import('@/pages/errors/404'),
-        hidden: true
       },
     ]
   },
@@ -53,12 +52,14 @@ export const routeElimination = [ // 路由除权
   {
     path: '/user',
     component: Layout,
-    meta: { title: 'user', icon: 'dashboard', roles: ['admin'] },
+    meta: { title: 'user', single: true, icon: 'dashboard', roles: ['admin'] },
+    show: true,
     children: [
       {
         path: '',
         component: () => import('@/pages/user/index'),
         name: 'user',
+        show: true,
         meta: { title: 'user', icon: 'dashboard', roles: ['admin'] }
       }
     ]

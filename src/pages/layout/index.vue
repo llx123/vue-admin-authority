@@ -2,19 +2,26 @@
   <div :class="{openBar: !isOpen, closeBar: isOpen, elLayout: true}">
     <side-bar @showBar="showBar"/>
     <div class="main-content">
-      <navbar />
+      <navbar :name="name"/>
       <content-main />
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import { Navbar, ContentMain, SideBar } from './components'
 export default {
   data() {
     return {
       isOpen: true
     }
+  },
+  computed: {
+    ...mapGetters([
+      'name'
+    ])
   },
   components: {
     Navbar,

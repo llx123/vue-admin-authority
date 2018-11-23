@@ -1,13 +1,14 @@
 <template>
   <div class="navbar">
     <div class="right-menu">
+      {{name}}
       <el-dropdown class="right-menu-item" trigger="click">
         <div class="avatar-wrapper">
           <i class="el-icon-service"></i>
           <i class="el-icon-caret-bottom"/>
         </div>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item divided>
+          <el-dropdown-item>
             <span style="display:block;" @click.stop="logout">logOut</span>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -23,6 +24,7 @@ export default {
 
     }
   },
+  props: ['name'],
   methods: {
     logout() {
       this.$store.dispatch('LogOut').then(() => {

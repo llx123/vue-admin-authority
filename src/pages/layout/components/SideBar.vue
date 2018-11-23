@@ -8,13 +8,13 @@
       @click="changecollapse">{{ isCollapse?'展开':'收起' }}</a>
     <el-menu 
       class="el-menu-vertical-demo"
-      default-active="1"
+      :default-active="$route.path"
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
       background-color="#545c64"
       text-color="#fff"
-      active-text-color="#ffd04b"
+      active-text-color="#fff"
       >
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :path="route.path"/>
     </el-menu>

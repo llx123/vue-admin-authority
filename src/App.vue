@@ -41,6 +41,9 @@ export default {
     & .main-content{
       margin-left: 192px;
     }
+    & ul {
+      text-align: left;
+    }
   }
   & .closeBar {
     & .main-content{
