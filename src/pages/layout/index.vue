@@ -39,16 +39,17 @@ export default {
 <style lang="postcss" scoped>
 .elLayout {
   & .el-scrollbar {
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    transition: width .28s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   & .main-content {
-    transition: margin-left .28s;
+    height: 100vh;
+    flex: 1 1;
+    width: calc(100% - 200px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 }
 .openBar {

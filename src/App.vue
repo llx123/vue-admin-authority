@@ -20,7 +20,12 @@ export default {
 </script>
 
 <style lang="postcss">
+body {
+  margin: 0;
+  padding: 0;
+}
 #app {
+  height: 100%;
   margin-top: -8px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,18 +33,32 @@ export default {
   text-align: center;
   color: #2c3e50;
   & .elLayout {
-    & .el-scrollbar {
-      & .scrollbar-wrapper {
-        overflow-x: hidden !important;
-        & .el-scrollbar__view {
-          height: 100%;
+    display: flex;
+    flex-direction: row;
+    & .menu-container {
+      & .el-scrollbar {
+        overflow-x: hidden;
+        flex: 1 1;
+        & .el-scrollbar__wrap {
+          overflow-x: hidden !important;
+          & .el-scrollbar__view {
+            height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+        }
+        & .el-scrollbar__bar.is-horizontal {
+          & .el-scrollbar__thumb {
+            display: none;
+          }
         }
       }
     }
   }
   & .openBar {
     & .main-content{
-      margin-left: 192px;
+      
     }
     & ul {
       text-align: left;

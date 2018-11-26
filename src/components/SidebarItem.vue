@@ -22,19 +22,23 @@
         </el-submenu> -->
       </el-submenu>
       <!-- 不展示子菜单 -->
-      <el-menu-item v-for="(p,i) in item.children" :key="i" :index="path===''?p.path:path" v-if="p.show && item.meta.single">
+      <el-menu-item v-for="(p,i) in item.children" :key="i"
+        :index="path===''?p.path:path"
+        v-if="p.show && item.meta.single"
+        @click="doRouter(path===''?p.path:path)">
         <i class="el-icon-menu"></i>
         <span slot="title" class="menu-link">
-          <router-link :to="path===''?p.path:path">{{p.meta?p.meta.title:''}}</router-link>          
+          {{p.meta?p.meta.title:''}}
         </span>
       </el-menu-item>
     </template>
     <!-- 不带子菜单 -->
     <template v-else>
-      <el-menu-item :index="path" v-if="item.show">
+      <el-menu-item :index="path" v-if="item.show"
+      @click="doRouter(path)">
         <i class="el-icon-menu"></i>
         <span slot="title" class="menu-link">
-          <router-link :to="path">{{item.meta?item.meta.title:''}}</router-link>
+          {{item.meta?item.meta.title:''}}
         </span>        
       </el-menu-item>
     </template>
@@ -55,7 +59,12 @@ export default {
     }
   },
   mounted() {
-    console.log(this.item,this.path,'1');
+    
+  },
+  methods: {
+    doRouter(path) {
+      this.$router.push(path)
+    }
   }
 };
 </script>

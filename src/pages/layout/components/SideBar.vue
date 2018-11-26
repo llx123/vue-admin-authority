@@ -1,24 +1,33 @@
 <template>
-  <el-scrollbar wrap-class="scrollbar-wrapper">
+  <div wrap-class="scrollbar-wrapper el-layout-sider"
+    :style="!isCollapse ? {flex: '0 0 200px', maxwidth: '200px', minwidth: '200px', width: '200px'} :
+     {flex: '0 0 60px', maxwidth: '60px', minwidth: '60px', width: '60px'}">
     <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
       <el-radio-button :label="false">展开</el-radio-button>
       <el-radio-button :label="true">收起</el-radio-button>
     </el-radio-group> -->
-    <a style="display: block; line-height: 50px; cursor: pointer; "
-      @click="changecollapse">{{ isCollapse?'展开':'收起' }}</a>
-    <el-menu 
-      class="el-menu-vertical-demo"
-      :default-active="$route.path"
-      @open="handleOpen"
-      @close="handleClose"
-      :collapse="isCollapse"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#fff"
-      >
-        <sidebar-item v-for="route in routes" :key="route.path" :item="route" :path="route.path"/>
-    </el-menu>
-  </el-scrollbar>
+    <div class="brand-title"
+      @click="changecollapse">{{ isCollapse?'展开':'收起' }}</div>
+    <div class="menu-container">
+      <el-scrollbar>
+        <el-menu 
+          class="el-menu-vertical-demo"
+          :default-active="$route.path"
+          @open="handleOpen"
+          @close="handleClose"
+          :collapse="isCollapse"
+          background-color="#545c64"
+          text-color="#fff"
+          active-text-color="#fff"
+          >
+            <sidebar-item v-for="route in routes" :key="route.path" :item="route" :path="route.path"/>
+        </el-menu>
+      </el-scrollbar>
+    </div>
+    <div class="switch-theme">
+      111111
+    </div>
+  </div>
 </template>
 
 <script>
@@ -69,5 +78,30 @@ export default {
 }
 .el-menu--collapse {
   height: 100%;
+}
+.el-layout-sider {
+
+}
+.brand-title {
+  z-index: 1;
+  height: 72px;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  box-shadow: 0 1px 9px -3px rgba(0,0,0,.2);
+}
+.menu-container {
+}
+.switch-theme {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  overflow: hidden;
+  transition: all .3s;
 }
 </style>
