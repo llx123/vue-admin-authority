@@ -1,11 +1,12 @@
 <template>
   <section class="app-main">
-    222222
-    <transition name="fade-transform" mode="out-in">
-      <keep-alive :include="cachedViews">
-        <router-view :key="key"/>
-      </keep-alive>
-    </transition>
+    <el-scrollbar>    
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive :include="cachedViews">
+          <router-view :key="key"/>
+        </keep-alive>
+      </transition>
+    </el-scrollbar>
   </section>
 </template>
 

@@ -30,10 +30,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 30px 0;
+  background-color: #fff;
+  cursor: pointer;
   & .card-panel-icon {
     margin-right: 10px;
-    font-size: 45px
+    font-size: 65px
   }
   & .card-panel-desc {
     text-align: left;

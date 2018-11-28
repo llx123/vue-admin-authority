@@ -37,8 +37,8 @@ export default {
 
 <style lang="postcss" scoped>
 .navbar {
-  height: 50px;
-  line-height: 50px;
+  height: 65px;
+  line-height: 60px;
   border-radius: 0px !important;
   & .right-menu {
     float: right;

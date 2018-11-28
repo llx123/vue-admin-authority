@@ -55,18 +55,31 @@ body {
         }
       }
     }
+    & .main-content {
+      & .app-main {        
+        background-color: #f0f2f5;
+        & .el-scrollbar {
+          & .el-scrollbar__wrap {
+            & .el-scrollbar__view {
+              height: calc(100vh - 72px);
+              padding: 20px 20px 0;
+              display: flex;              
+              & .el-dashboard {
+                & > div {
+                  & > div {
+                    margin-bottom: 20px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   & .openBar {
-    & .main-content{
-      
-    }
     & ul {
       text-align: left;
-    }
-  }
-  & .closeBar {
-    & .main-content{
-      margin-left: 56px;
     }
   }
 }

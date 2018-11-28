@@ -1,5 +1,5 @@
 <template>
-  <div wrap-class="scrollbar-wrapper el-layout-sider"
+  <div class="scrollbar-wrapper el-layout-sider"
     :style="!isCollapse ? {flex: '0 0 200px', maxwidth: '200px', minwidth: '200px', width: '200px'} :
      {flex: '0 0 60px', maxwidth: '60px', minwidth: '60px', width: '60px'}">
     <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
@@ -79,8 +79,8 @@ export default {
 .el-menu--collapse {
   height: 100%;
 }
-.el-layout-sider {
-
+.el-layout-sider {  
+  transition: all linear .3s;
 }
 .brand-title {
   z-index: 1;
@@ -102,6 +102,5 @@ export default {
   align-items: center;
   padding: 0 16px;
   overflow: hidden;
-  transition: all .3s;
 }
 </style>
