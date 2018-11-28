@@ -47,9 +47,18 @@ export default {
     height: 100vh;
     flex: 1 1;
     width: calc(100% - 200px);
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden;
     box-sizing: border-box;
+    padding-top: 72px;
+    & .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: calc(100% - 256px);
+      z-index: 9;
+      transition: width .2s;
+    }
+    
   }
 }
 .openBar {
