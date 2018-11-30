@@ -65,6 +65,7 @@ body {
               padding: 20px 20px 0;
               display: flex;
               & .el-dashboard {
+                flex: 1;
                 & > div {
                   & > div {
                     margin-bottom: 20px;

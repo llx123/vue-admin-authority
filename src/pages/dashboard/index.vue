@@ -42,9 +42,8 @@
         />
       </el-col>
       <el-col :md="24" :lg="18">
-        <el-button @click="reSize">11</el-button>
         <div style="background-color: #fff">          
-          
+          <line-chart :chart-data="lineChartData"/>
         </div>
       </el-col>
     </el-row>
@@ -55,12 +54,16 @@
 import { mapGetters } from "vuex";
 import CountTo from "vue-count-to";
 import NumberCard from "@/components/NumberCard";
-
+import LineChart from '@/components/LineChart'
 
 export default {
   name: "Dashboard",
   data() {
-    return {      
+    return {
+      lineChartData: {
+        expectedData: [100, 120, 161, 134, 105, 160, 165],
+        actualData: [120, 82, 91, 154, 162, 140, 145]
+      },
       option: {
         color: ['blue','red'],
         animation: false,
@@ -147,7 +150,8 @@ export default {
   },
   components: {
     CountTo,
-    NumberCard
+    NumberCard,
+    LineChart
   },
   computed: {
     ...mapGetters(["name"])
