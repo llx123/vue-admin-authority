@@ -4,7 +4,6 @@
 
 <script>
 import echarts from 'echarts'
-require('echarts/theme/macarons') // echarts theme
 import { debounce } from '@/utils'
 
 export default {
@@ -80,11 +79,25 @@ export default {
     },
     setOptions({ expectedData, actualData } = {}) {
       this.chart.setOption({
+        color: ['rgb(216, 151, 235)','rgb(246, 152, 153)'],
         xAxis: {
           data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           boundaryGap: false,
           axisTick: {
             show: false
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: '#ebebeb',
+              width: 2,
+            },
+          },
+          axisLabel: {
+            textStyle: {
+              color : '#8c8c8c',
+              opacity: 1
+            }              
           }
         },
         yAxis: {
@@ -98,6 +111,12 @@ export default {
             lineStyle: {
               type: 'dashed'
             }
+          },
+          axisLabel: {
+            textStyle: {
+              color : '#ebebeb',
+              opacity: 1
+            }              
           }
         },
         grid: {
@@ -109,10 +128,14 @@ export default {
         },
         tooltip: {
           trigger: 'axis',
-          // axisPointer: {
-          //   type: 'cross'
-          // },
-          // padding: [5, 10]
+          axisPointer: {
+            // type: 'cross',
+            lineStyle: {
+              color: '#8c8c8c',
+              opacity: 0.5
+            }
+          },
+          padding: [5, 10]
         },
         legend: {
           right: "right",
@@ -121,50 +144,33 @@ export default {
           width: 200,
         },
         series: [{
-          name: 'expected', itemStyle: {
-            normal: {
-              color: '#FF005A',
-              lineStyle: {
-                color: '#FF005A',
-                width: 2
-              }
-            }
+          name: '最高气温',
+          lineStyle: {
+            width: 3
           },
           smooth: true,
           type: 'line',
           data: expectedData,
           animation: false,
-          animationEasing: 'cubicInOut',
           symbol: 'circle',
-          symbolSize: 10,
-          symbolKeepAspect: true
+          symbolSize: 8,
         },
         {
-          name: 'actual',
+          name: '最低气温',
           smooth: true,
-          type: 'line',
-          itemStyle: {
-            normal: {
-              color: '#3888fa',
-              lineStyle: {
-                color: '#3888fa',
-                width: 2
-              },
-              areaStyle: {
-                color: '#f3f8ff'
-              }
-            }
+          type: 'line',        
+          lineStyle: {
+            width: 3
           },
           data: actualData,
           animation: false,
-          animationEasing: 'quadraticOut',
           symbol: 'circle',
-          symbolSize: 10
+          symbolSize: 8
         }]
       })
     },
     initChart() {
-      this.chart = echarts.init(this.$el, 'macarons')
+      this.chart = echarts.init(this.$el)
       this.setOptions(this.chartData)
     }
   }

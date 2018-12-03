@@ -1,7 +1,7 @@
 <template>
   <div class="el-dashboard">
     <el-row :gutter="20">
-      <el-col :md="12" :lg="6">
+      <el-col :sm="12" :md="6">
         <NumberCard
           icon-type="el-icon-view"
           card-text="Online Review"
@@ -11,7 +11,7 @@
           icon-color="rgb(100, 234, 145)"
         />
       </el-col>
-      <el-col :md="12" :lg="6">
+      <el-col :sm="12" :md="6">
         <NumberCard
           icon-type="el-icon-service"
           card-text="New Customers"
@@ -21,7 +21,7 @@
           icon-color="rgb(100, 234, 145)"
         />
       </el-col>
-      <el-col :md="12" :lg="6">
+      <el-col :sm="12" :md="6">
         <NumberCard
           icon-type="el-icon-bell"
           card-text="Active Projects"
@@ -31,7 +31,7 @@
           icon-color="rgb(100, 234, 145)"
         />
       </el-col>
-      <el-col :md="12" :lg="6">
+      <el-col :sm="12" :md="6">
         <NumberCard
           icon-type="el-icon-goods"
           card-text="Referrals"
@@ -41,7 +41,7 @@
           icon-color="rgb(100, 234, 145)"
         />
       </el-col>
-      <el-col :md="24" :lg="18">
+      <el-col :sm="24" :md="18">
         <div style="background-color: #fff">          
           <line-chart :chart-data="lineChartData"/>
         </div>
@@ -65,7 +65,7 @@ export default {
         actualData: [120, 82, 91, 154, 162, 140, 145]
       },
       option: {
-        color: ['blue','red'],
+        color: ['rgb(216, 151, 235)','rgb(246, 152, 153)'],
         animation: false,
         title: {
           text: "Yearly Sales",
@@ -75,7 +75,12 @@ export default {
           }
         },
         tooltip: {
-          trigger: "axis"
+          trigger: "axis",
+          axisPointer: {
+            lineStyle: {
+              color: 'red'
+            }
+          },
         },
         legend: {
           right: "right",
