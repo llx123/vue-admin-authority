@@ -46,6 +46,21 @@
           <line-chart :chart-data="lineChartData"/>
         </div>
       </el-col>
+      <el-col :sm="24" :md="6">
+        <el-col :sm="12" :md="24">
+          <div class="weather" style="background-color: '#fff';height: '20px'">
+            <div class="left">
+              <div style="width:100px;height: 50px;background-image: url('//s5.sencdn.com/web/icons/3d_50/4.png');background-repeat: no-repeat;"></div>
+            </div>
+            <div class="right">
+              011
+            </div>
+          </div>
+        </el-col>
+        <el-col :sm="12" :md="24">
+          222222
+        </el-col>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -171,4 +186,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+.el-dashboard {
+  width: 100%
+}
 </style>
