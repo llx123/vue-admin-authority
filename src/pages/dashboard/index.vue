@@ -47,19 +47,13 @@
         </div>
       </el-col>
       <el-col :sm="24" :md="6">
-        <el-col :sm="12" :md="24">
-          <div class="weather" style="background-color: '#fff';height: '20px'">
-            <div class="left">
-              <div style="width:100px;height: 50px;background-image: url('//s5.sencdn.com/web/icons/3d_50/4.png');background-repeat: no-repeat;"></div>
-            </div>
-            <div class="right">
-              011
-            </div>
-          </div>
-        </el-col>
-        <el-col :sm="12" :md="24">
-          222222
-        </el-col>
+        <weather />
+      </el-col>
+      <el-col :sm="24" :md="12">
+        <rencent-sales />
+      </el-col>
+      <el-col :sm="24" :md="12">
+        <comments />
       </el-col>
     </el-row>
   </div>
@@ -70,6 +64,9 @@ import { mapGetters } from "vuex";
 import CountTo from "vue-count-to";
 import NumberCard from "@/components/NumberCard";
 import LineChart from '@/components/LineChart'
+import Weather from './components/Weather'
+import RencentSales from './components/RencentSales'
+import Comments from './components/Comments'
 
 export default {
   name: "Dashboard",
@@ -171,7 +168,10 @@ export default {
   components: {
     CountTo,
     NumberCard,
-    LineChart
+    LineChart,
+    Weather,
+    RencentSales,
+    Comments
   },
   computed: {
     ...mapGetters(["name"])
