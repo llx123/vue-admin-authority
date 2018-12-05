@@ -1,6 +1,6 @@
 <template>
   <section class="app-main">
-    <el-scrollbar>    
+    <el-scrollbar class="main-scroll">
       <transition name="fade-transform" mode="out-in">
         <keep-alive :include="cachedViews">
           <router-view :key="key"/>
