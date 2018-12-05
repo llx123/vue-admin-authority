@@ -1,5 +1,5 @@
 <template>
-  <div :class="className" :style="{height:height,width:width}"/>
+  <div :class="className" :style="{height:height,width:width, paddingTop: '10px'}"/>
 </template>
 
 <script>
@@ -79,7 +79,15 @@ export default {
     },
     setOptions({ expectedData, actualData } = {}) {
       this.chart.setOption({
-        color: ['rgb(216, 151, 235)','rgb(246, 152, 153)'],
+        color: ['rgb(216, 151, 235)','rgb(246, 152, 153)','#62e58e'],
+        title: {
+          text: "Yearly Sales",
+          textStyle: {
+            fontSize: 14,
+            color: '#666',
+            fontWeight: 'normal'
+          }
+        },
         xAxis: {
           data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
           boundaryGap: false,
@@ -114,16 +122,16 @@ export default {
           },
           axisLabel: {
             textStyle: {
-              color : '#ebebeb',
+              color : '#8c8c8c',
               opacity: 1
             }              
           }
         },
         grid: {
-          left: 10,
-          right: 10,
-          bottom: 20,
-          top: 30,
+          left: 20,
+          right: 20,
+          bottom: 10,
+          // top: 30,
           containLabel: true
         },
         tooltip: {
@@ -138,13 +146,18 @@ export default {
           padding: [5, 10]
         },
         legend: {
-          right: "right",
-          data: [{name: "最高气温", icon: 'circle'}, {name: "最低气温", icon: 'circle'}],
+          right: 10,
+          top: 15,
+          data: [
+              {name: "Food", icon: 'circle'},
+              {name: "Clothes", icon: 'circle'},
+              {name: "Electronics", icon: 'circle'}
+            ],
           selectedMode: false,
-          width: 200,
+          width: 260,
         },
         series: [{
-          name: '最高气温',
+          name: 'Food',
           lineStyle: {
             width: 3
           },
@@ -156,13 +169,25 @@ export default {
           symbolSize: 8,
         },
         {
-          name: '最低气温',
+          name: 'Clothes',
           smooth: true,
-          type: 'line',        
+          type: 'line',
           lineStyle: {
             width: 3
           },
           data: actualData,
+          animation: false,
+          symbol: 'circle',
+          symbolSize: 8
+        },
+        {
+          name: 'Electronics',
+          smooth: true,
+          type: 'line',
+          lineStyle: {
+            width: 3
+          },
+          data: [50,50,50,50,50,50,50],
           animation: false,
           symbol: 'circle',
           symbolSize: 8
