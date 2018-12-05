@@ -17,7 +17,7 @@
           @close="handleClose"
           :collapse="isCollapse"
           background-color="#545c64"
-          text-color="#fff"
+          text-color="#909399"
           active-text-color="#fff"
           >
             <sidebar-item v-for="route in routes" :key="route.path" :item="route" :path="route.path"/>
