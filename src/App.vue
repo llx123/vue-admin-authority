@@ -58,20 +58,32 @@ body {
     & .main-content {
       & .app-main {        
         background-color: #f0f2f5;
-        & .el-scrollbar {
-          & .el-scrollbar__wrap {
-            & .el-scrollbar__view {
+        & .main-scroll.el-scrollbar {
+          height: 100%;
+          & > .el-scrollbar__wrap {
+            overflow-x: hidden;
+            & > .el-scrollbar__view {
               height: calc(100vh - 72px);
               padding: 20px 20px 0;
               display: flex;
               & .el-dashboard {
                 flex: 1;
                 & > div {
-                  & > div {
+                  & > div.el-col {
                     margin-bottom: 20px;
                   }
                 }
               }
+            }
+          }
+        }
+        & .card-scroll.el-scrollbar {
+          height: 100%;
+          & >.el-scrollbar__wrap {
+            overflow-x: hidden;
+            & > .el-scrollbar__view {
+              height: 100%;
+              padding: 0;
             }
           }
         }
