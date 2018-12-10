@@ -1,6 +1,6 @@
 <template>
   <div :class="{openBar: !isOpen, closeBar: isOpen, elLayout: true}">
-    <side-bar @showBar="showBar"/>
+    <side-bar class="sidebar-container" @showBar="showBar"/>
     <div class="main-content">
       <navbar :name="name"/>
       <content-main />

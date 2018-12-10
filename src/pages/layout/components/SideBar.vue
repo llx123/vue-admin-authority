@@ -57,7 +57,8 @@ export default {
       console.log(key, keyPath);
     },
     changecollapse() {
-      this.isCollapse = !this.isCollapse
+      this.isCollapse = !this.isCollapse;
+      this.$store.dispatch('toggleSideBar')
     }
   },
   watch: {
