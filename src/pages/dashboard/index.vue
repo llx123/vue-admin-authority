@@ -42,7 +42,7 @@
         />
       </el-col>
       <el-col :sm="24" :md="18">
-        <div style="background-color: #fff">          
+        <div style="background-color: #fff">
           <line-chart :chart-data="lineChartData"/>
         </div>
       </el-col>
@@ -55,6 +55,11 @@
       <el-col :sm="24" :md="12">
         <comments />
       </el-col>
+      <el-col :span="24">
+        <div style="background-color: #fff">
+          <area-chart :chart-data="lineChartData"/>
+        </div>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -62,11 +67,12 @@
 <script>
 import { mapGetters } from "vuex";
 import CountTo from "vue-count-to";
-import NumberCard from "@/components/NumberCard";
-import LineChart from '@/components/LineChart'
+import NumberCard from "./components/NumberCard"
+import LineChart from './components/LineChart'
 import Weather from './components/Weather'
 import RencentSales from './components/RencentSales'
 import Comments from './components/Comments'
+import AreaChart from './components/AreaChart'
 
 export default {
   name: "Dashboard",
@@ -171,7 +177,8 @@ export default {
     LineChart,
     Weather,
     RencentSales,
-    Comments
+    Comments,
+    AreaChart
   },
   computed: {
     ...mapGetters(["name"])
