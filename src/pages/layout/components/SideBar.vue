@@ -1,31 +1,31 @@
 <template>
   <div class="scrollbar-wrapper el-layout-sider"
-    :style="!isCollapse ? {flex: '0 0 200px', maxwidth: '200px', minwidth: '200px', width: '200px'} :
-     {flex: '0 0 60px', maxwidth: '60px', minwidth: '60px', width: '60px'}">
-    <!-- <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-      <el-radio-button :label="false">展开</el-radio-button>
-      <el-radio-button :label="true">收起</el-radio-button>
-    </el-radio-group> -->
+    :style="!opened ? {flex: '0 0 200px', maxwidth: '200px', minwidth: '200px', width: '200px'} :
+     {flex: '0 0 60px', maxwidth: '60px', minwidth: '60px', width: '60px'}">    
     <div class="brand-title"
-      @click="changecollapse">{{ isCollapse?'展开':'收起' }}</div>
+      @click="changeCollapse">{{ !opened?'A-BC':'BC' }}</div>
     <div class="menu-container">
       <el-scrollbar>
         <el-menu 
-          class="el-menu-vertical-demo"
+          :collapse="opened"
           :default-active="$route.path"
           @open="handleOpen"
           @close="handleClose"
-          :collapse="isCollapse"
-          background-color="#545c64"
+          :background-color="themeType?'#545c64':'#fff'"
           text-color="#909399"
-          active-text-color="#fff"
+          :active-text-color="themeType?'#fff':'#545c64'"
+          class="el-menu-vertical-demo"
           >
             <sidebar-item v-for="route in routes" :key="route.path" :item="route" :path="route.path"/>
         </el-menu>
       </el-scrollbar>
     </div>
-    <div class="switch-theme">
-      111111
+    <div class="switch-theme">      
+      <el-switch
+        v-model="theme"
+        @change="changeTheme"
+        active-text="Switch Theme">
+      </el-switch>
     </div>
   </div>
 </template>
@@ -37,17 +37,17 @@ import SidebarItem from '@/components/SidebarItem'
 export default {
   data() {
     return {
-      isCollapse: false
+      theme: true
     }
   },
   computed: {
     ...mapGetters([
-      'routes'
+      'routes','opened', 'themeType'
     ])
   },
   components: { SidebarItem },
   mounted() {
-    console.log(this.routes)
+    console.log(this.routes,this.opened)
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -56,14 +56,16 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
-    changecollapse() {
-      this.isCollapse = !this.isCollapse;
+    changeCollapse() {
       this.$store.dispatch('toggleSideBar')
+    },
+    changeTheme(v) {
+      this.$store.dispatch('toggleTheme')
     }
   },
   watch: {
-    isCollapse: {
-      handler: function (val, oldVal) { 
+    opened: {
+      handler: function (val, oldVal) {
         this.$emit('showBar',val); // watch 伸缩展开，通知父组件执行相关操作
       },
       immediate: true

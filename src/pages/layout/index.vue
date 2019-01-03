@@ -46,7 +46,7 @@ export default {
   & .main-content {
     height: 100vh;
     flex: 1 1;
-    width: calc(100% - 200px);
+    /* width: calc(100% - 200px); */
     overflow: hidden;
     box-sizing: border-box;
     padding-top: 72px;
@@ -54,7 +54,6 @@ export default {
       position: fixed;
       top: 0;
       right: 0;
-      width: calc(100% - 256px);
       z-index: 9;
       transition: width .2s;
     }
@@ -64,11 +63,17 @@ export default {
 .openBar {
   & .el-scrollbar {
     width: 200px;
-  }  
+  }
+  & .navbar {    
+    width: calc(100% - 200px);
+  }
 }
 .closeBar {
   & .el-scrollbar {
     width: 64px;
-  }  
+  }
+  & .navbar {    
+    width: calc(100% - 64px);
+  }
 }
 </style>
