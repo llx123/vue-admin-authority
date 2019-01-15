@@ -7,4 +7,7 @@ Mock.mock(/\/user\/login/, 'post', User.login)
 Mock.mock(/\/user\/info/, 'get', User.info)
 Mock.mock(/\/user\/logout/, 'post', User.logout)
 
+// dashboard
+
+
 export default Mock

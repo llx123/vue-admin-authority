@@ -47,7 +47,7 @@ export default {
   },
   components: { SidebarItem },
   mounted() {
-    console.log(this.routes,this.opened)
+    
   },
   methods: {
     handleOpen(key, keyPath) {
