@@ -1,46 +1,18 @@
 <template>
   <div class="el-dashboard">
     <el-row :gutter="20">
-      <el-col :sm="12" :md="6">
+      <!-- numbers -->
+      <el-col v-for="item in dashboard.numbers" :sm="12" :md="6">
         <NumberCard
-          icon-type="el-icon-view"
-          card-text="Online Review"
+          :icon-type="item.icon"
+          :card-text="item.title"
           :start="0"
-          :end="1000"
+          :end="item.number"
           :duration="2000"
-          icon-color="rgb(100, 234, 145)"
+          :icon-color="item.color"
         />
       </el-col>
-      <el-col :sm="12" :md="6">
-        <NumberCard
-          icon-type="el-icon-service"
-          card-text="New Customers"
-          :start="0"
-          :end="1000"
-          :duration="2000"
-          icon-color="rgb(100, 234, 145)"
-        />
-      </el-col>
-      <el-col :sm="12" :md="6">
-        <NumberCard
-          icon-type="el-icon-bell"
-          card-text="Active Projects"
-          :start="0"
-          :end="1000"
-          :duration="2000"
-          icon-color="rgb(100, 234, 145)"
-        />
-      </el-col>
-      <el-col :sm="12" :md="6">
-        <NumberCard
-          icon-type="el-icon-goods"
-          card-text="Referrals"
-          :start="0"
-          :end="1000"
-          :duration="2000"
-          icon-color="rgb(100, 234, 145)"
-        />
-      </el-col>
+      <!-- end -->
       <el-col :sm="24" :md="18">
         <div style="background-color: #fff">
           <line-chart :chart-data="lineChartData"/>
@@ -65,19 +37,22 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import CountTo from "vue-count-to";
+import { getDashboardList } from '../../services/dashboard'
+import { mapGetters } from "vuex"
+import CountTo from "vue-count-to"
 import NumberCard from "./components/NumberCard"
 import LineChart from './components/LineChart'
 import Weather from './components/Weather'
 import RencentSales from './components/RencentSales'
 import Comments from './components/Comments'
 import AreaChart from './components/AreaChart'
-
 export default {
   name: "Dashboard",
   data() {
     return {
+      dashboard: {
+        numbers: []
+      },
       lineChartData: {
         expectedData: [100, 120, 161, 134, 105, 160, 165],
         actualData: [120, 82, 91, 154, 162, 140, 145]
@@ -184,7 +159,10 @@ export default {
     ...mapGetters(["name"])
   },
   mounted() {
-    
+    getDashboardList().then(res=>{
+      console.log(res.data)
+      this.dashboard = res.data
+    })
   },
   methods: {
     

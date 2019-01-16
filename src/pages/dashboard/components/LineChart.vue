@@ -78,7 +78,7 @@ export default {
         this.__resizeHandler()
       }
     },
-    setOptions({ expectedData, actualData } = {}) {
+    setOptions({ expectedData, actualData }) {
       this.chart.setOption({
         color: ['rgb(216, 151, 235)','rgb(246, 152, 153)','#62e58e'],
         title: {
