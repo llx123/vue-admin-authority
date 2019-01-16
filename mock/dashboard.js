@@ -27,7 +27,7 @@ const Dashboard = Mock.mock({
       'color': '#f69899'
     },
   ],
-  'sales|7': [
+  'sales|9': [
     {
       'name|+1': 2010,
       'Clothes|200-500': 1,

@@ -2,7 +2,7 @@
   <div class="el-dashboard">
     <el-row :gutter="20">
       <!-- numbers -->
-      <el-col v-for="item in dashboard.numbers" :sm="12" :md="6">
+      <el-col v-for="item in dashboard.numbers" :key="item.number" :sm="12" :md="6">
         <NumberCard
           :icon-type="item.icon"
           :card-text="item.title"
@@ -29,7 +29,7 @@
       </el-col>
       <el-col :span="24">
         <div style="background-color: #fff">
-          <area-chart :chart-data="lineChartData"/>
+          <area-chart :chart-data="areaChartData"/>
         </div>
       </el-col>
     </el-row>
@@ -54,8 +54,14 @@ export default {
         numbers: []
       },
       lineChartData: {
+        foodArr: [],
+        clothesArr: [],
+        elecArr: [],
+        yearArr: [],
+      },
+      areaChartData: {
         expectedData: [100, 120, 161, 134, 105, 160, 165],
-        actualData: [120, 82, 91, 154, 162, 140, 145]
+        actualData: [120, 82, 91, 154, 162, 140, 145],
       },
       option: {
         color: ['rgb(216, 151, 235)','rgb(246, 152, 153)'],
@@ -162,6 +168,15 @@ export default {
     getDashboardList().then(res=>{
       console.log(res.data)
       this.dashboard = res.data
+
+      let foodArr = [], clothesArr = [], elecArr = [], yearArr = []
+      res.data.sales.map(item=>{
+        foodArr.push(item.Food)
+        clothesArr.push(item.Clothes)
+        elecArr.push(item.Electronics)
+        yearArr.push(item.name)
+      })
+      this.lineChartData = { ...this.lineChartData, foodArr, clothesArr, elecArr, yearArr }
     })
   },
   methods: {
