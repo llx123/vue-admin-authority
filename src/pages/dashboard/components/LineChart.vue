@@ -78,7 +78,7 @@ export default {
         this.__resizeHandler()
       }
     },
-    setOptions({ expectedData, actualData }) {
+    setOptions({ foodArr, clothesArr, elecArr, yearArr }) {
       this.chart.setOption({
         color: ['rgb(216, 151, 235)','rgb(246, 152, 153)','#62e58e'],
         title: {
@@ -90,7 +90,7 @@ export default {
           }
         },
         xAxis: {
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: yearArr,
           boundaryGap: false,
           axisTick: {
             show: false
@@ -165,7 +165,7 @@ export default {
           },
           smooth: true,
           type: 'line',
-          data: expectedData,
+          data: foodArr,
           animation: false,
           symbol: 'circle',
           symbolSize: 8,
@@ -178,7 +178,7 @@ export default {
           lineStyle: {
             width: 3
           },
-          data: actualData,
+          data: clothesArr,
           animation: false,
           symbol: 'circle',
           symbolSize: 8
@@ -190,7 +190,7 @@ export default {
           lineStyle: {
             width: 3
           },
-          data: [50,50,50,50,50,50,50],
+          data: elecArr,
           animation: false,
           symbol: 'circle',
           symbolSize: 8
