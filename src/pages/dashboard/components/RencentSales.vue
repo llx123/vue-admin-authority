@@ -2,19 +2,33 @@
   <div class="rencent-sales">
     <el-scrollbar class="card-scroll">
       <el-table
-        :data="tableData"
+        :data="rencentSales"
+        align="center"
         style="width: 100%">
         <el-table-column
-          prop="date"
-          label="日期">
-        </el-table-column>
-        <el-table-column
           prop="name"
-          label="姓名">
+          align="center"
+          label="NAME">
         </el-table-column>
         <el-table-column
-          prop="address"
-          label="地址">
+          label="STATUS"          
+          align="center">          
+          <template slot-scope="scope">
+            <span :style="renderStyle(scope.row.status)">{{ renderStatus(scope.row.status) }}</span>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="date"
+          align="center"
+          label="DATE">
+        </el-table-column>
+        <el-table-column
+          prop=""
+          align="center"
+          label="PRICE">
+          <template slot-scope="scope">
+            <span :style="renderStyle(scope.row.status)">{{ `$${scope.row.price}` }}</span>
+          </template>
         </el-table-column>
       </el-table>
     </el-scrollbar>
@@ -25,23 +39,34 @@
 export default {
   data() {
     return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      
+    }
+  },
+  props: ['rencentSales'],  
+  methods: {
+    renderStatus(v) {
+      switch(v) {
+        case "0":
+          return 'REJECT';
+        case "1":
+          return 'TAX';
+        case "2":
+          return 'SALE';
+        case "3":
+          return 'EXTENDED';
+      }
+    },
+    renderStyle(v) {
+      switch(v) {
+        case "0":
+          return "padding: 3px; background-color: rgb(248, 200, 46); color: #fff";
+        case "1":
+          return "padding: 3px; background-color: rgb(246, 152, 153); color: #fff";
+        case "2":
+          return "padding: 3px; background-color: rgb(100, 234, 145); color: #fff";
+        case "3":
+          return "padding: 3px; background-color: rgb(143, 201, 251); color: #fff";
+      }
     }
   }
 }
