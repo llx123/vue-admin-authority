@@ -35,6 +35,52 @@ const Dashboard = Mock.mock({
       'Electronics|300-550': 1,
     },
   ],
+  'totalComplete|9': [
+    {
+      'name|+1': 2010,
+      'task|200-500': 1,
+      'card|130-400': 1,
+    },
+  ],
+  'weather': {
+    'temperature|0-25': 15,
+    'city': '南京',
+    'desc': '晴转多云'
+  },
+  'rencentSales': [
+    {
+      'name': 'Bruce',
+      'status': '3',
+      'date': '2018-12-12',
+      'price': '998',
+      'avatar': 'http://dummyimage.com/48x48/f28979/757575.png&text=B',
+      'assess': 'It\'s very nice. very useful.'
+    },
+    {
+      'name': 'John',
+      'status': '2',
+      'date': '2018-12-13',
+      'price': '202',
+      'avatar': 'http://dummyimage.com/48x48/798bf2/757575.png&text=J',
+      'assess': 'It\'s very nice. very useful.'
+    },
+    {
+      'name': 'Taylor',
+      'status': '1',
+      'date': '2018-12-14',
+      'price': '899',
+      "avatar": 'http://dummyimage.com/48x48/aff279/757575.png&text=T',
+      'assess': 'It\'s very nice. very useful.'
+    },
+    {
+      'name': 'Robot',
+      'status': '0',
+      'date': '2018-12-15',
+      'price': '998',
+      "avatar": 'http://dummyimage.com/48x48/798bf2/757575.png&text=R',
+      'assess': 'It\'s very nice. very useful.'
+    }
+  ]
 })
 
 export default Dashboard
