@@ -19,13 +19,13 @@
         </div>
       </el-col>
       <el-col :sm="24" :md="6">
-        <weather />
+        <weather :weatherData="dashboard.weather"/>
       </el-col>
       <el-col :sm="24" :md="12">
-        <rencent-sales />
+        <rencent-sales :rencentSales="dashboard.rencentSales"/>
       </el-col>
       <el-col :sm="24" :md="12">
-        <comments />
+        <comments :rencentSales="dashboard.rencentSales"/>
       </el-col>
       <el-col :span="24">
         <div style="background-color: #fff">
@@ -51,7 +51,9 @@ export default {
   data() {
     return {
       dashboard: {
-        numbers: []
+        numbers: [],
+        weather: {},
+        rencentSales: []
       },
       lineChartData: {
         foodArr: [],
@@ -60,8 +62,9 @@ export default {
         yearArr: [],
       },
       areaChartData: {
-        expectedData: [100, 120, 161, 134, 105, 160, 165],
-        actualData: [120, 82, 91, 154, 162, 140, 145],
+        task: [],
+        card: [],
+        yearArr: []
       },
       option: {
         color: ['rgb(216, 151, 235)','rgb(246, 152, 153)'],
@@ -177,6 +180,12 @@ export default {
         yearArr.push(item.name)
       })
       this.lineChartData = { ...this.lineChartData, foodArr, clothesArr, elecArr, yearArr }
+      let taskArr = [], cardArr =  []
+      res.data.totalComplete.map(item=>{
+        taskArr.push(item.task)
+        cardArr.push(item.card)
+      })
+      this.areaChartData = { taskArr, cardArr, yearArr }
     })
   },
   methods: {

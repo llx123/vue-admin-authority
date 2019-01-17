@@ -78,7 +78,7 @@ export default {
         this.__resizeHandler()
       }
     },
-    setOptions({ expectedData, actualData } = {}) {
+    setOptions({ taskArr, cardArr, yearArr } = {}) {
       this.chart.setOption({
         color: ['#c1e0fc','#e3fccd'],
         title: {
@@ -93,7 +93,7 @@ export default {
         xAxis: {
           type: 'category',
           boundaryGap: false,
-          data: ['2008', '2009', '2010', '2011', '2012', '2013', '2014']
+          data: yearArr
         },
         yAxis: {
           type: 'value'
@@ -120,15 +120,15 @@ export default {
           right: 10,
           top: 15,
           data: [
-              {name: "Food", icon: 'circle'},
-              {name: "Clothes", icon: 'circle'}
+              {name: "Cards Complete", icon: 'circle'},
+              {name: "Task complete", icon: 'circle'}
             ],
           selectedMode: false,
           width: 260,
         },
         series: [{
-          data: [820, 732, 501, 934, 1290, 1330, 1320],
-          name: 'Food',
+          data: cardArr,
+          name: 'Cards Complete',
           zlevel: 2,
           type: 'line',
           smooth: true,
@@ -136,8 +136,8 @@ export default {
             color: '#daecfd'
           }
         },{
-          data: [120, 832, 701, 934, 290, 2230, 320],
-          name: 'Clothes',
+          data: taskArr,
+          name: 'Task complete',
           zlevel: 2,
           type: 'line',
           smooth: true,
