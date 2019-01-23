@@ -26,13 +26,14 @@ export const constantRouterMap = [
     component: Layout,
     redirect: 'dashboard',
     meta: {single: true},
+    show: true,
     children: [
       {
         path: '/dashboard',
         component: () => import('@/pages/dashboard/index'),
         show: true,
         name: 'Dashboard',
-        meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+        meta: { title: 'dashboard', icon: 'el-icon-menu', noCache: true }
       },
       {
         path: '/404',
@@ -60,7 +61,7 @@ export const routeElimination = [ // 路由除权
         component: () => import('@/pages/user/index'),
         name: 'user',
         show: true,
-        meta: { title: 'user', icon: 'dashboard', roles: ['admin'] }
+        meta: { title: 'user', icon: 'el-icon-service', roles: ['admin'] }
       }
     ]
   }
