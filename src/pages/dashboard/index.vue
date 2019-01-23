@@ -169,7 +169,6 @@ export default {
   },
   mounted() {
     getDashboardList().then(res=>{
-      console.log(res.data)
       this.dashboard = res.data
 
       let foodArr = [], clothesArr = [], elecArr = [], yearArr = []

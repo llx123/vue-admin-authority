@@ -3,10 +3,10 @@
     <el-scrollbar class="card-scroll">
       <div class="comments">        
         <el-row class="container" v-for="(item,index) in rencentSales" :key="index">
-          <el-col span="4" class="left">
+          <el-col :span="4" class="left">
             <img :src="item['avatar']" :alt="item.name">
           </el-col>
-          <el-col span="20" class="right">
+          <el-col :span="20" class="right">
             <div class="name">{{item.name}}</div>
             <div class="assess">{{item.assess}}</div>
             <div class="date">{{item.date}}</div>
