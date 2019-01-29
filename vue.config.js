@@ -1,3 +1,6 @@
 module.exports = {
-  baseUrl: '/'
+  baseUrl: '/',
+  devServer: {
+    port: 8888
+  }
 }
