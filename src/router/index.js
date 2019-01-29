@@ -61,7 +61,22 @@ export const routeElimination = [ // 路由除权
         component: () => import('@/pages/user/index'),
         name: 'user',
         show: true,
-        meta: { title: 'user', icon: 'el-icon-service', roles: ['admin'] }
+        meta: { title: 'Users', icon: 'el-icon-service', roles: ['admin'] }
+      }
+    ]
+  },
+  {
+    path: '/posts',
+    component: Layout,
+    meta: { title: 'Posts', single: true, roles: ['admin'] },
+    show: true,
+    children: [
+      {
+        path: '',
+        component: () => import('@/pages/posts/index'),
+        name: 'post',
+        show: true,
+        meta: { title: 'Posts', icon: 'el-icon-goods', roles: ['admin'] }
       }
     ]
   }
