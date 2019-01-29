@@ -1,23 +1,29 @@
 <template>
   <div class="user">    
-    <filters />
+    <filters @changeUser="changeUser"/>
     <list />
+    <create-user :dialogVisible="dialogVisible" @changeUser="changeUser"/>
   </div>
 </template>
 
 <script>
-import { List, Filters } from './component'
+import { List, Filters, CreateUser } from './component'
 export default {
   data() {
     return {
-
+      dialogVisible: false
     }
   },
   components: {
-    List, Filters
+    List, Filters, CreateUser
   },
   mounted() {
     
+  },
+  methods: {
+    changeUser(v) {
+      this.dialogVisible = v
+    }
   }
 }
 </script>
