@@ -19,6 +19,7 @@ export const constantRouterMap = [
   },
   {
     path: '/login',
+    name: 'login',
     component: () => import('@/pages/login/index'),
   },
   {
@@ -37,6 +38,7 @@ export const constantRouterMap = [
       },
       {
         path: '/404',
+        name: '404',
         component: () => import('@/pages/errors/404'),
       },
     ]
@@ -83,15 +85,22 @@ export const routeElimination = [ // 路由除权
   {
     path: '/ui',
     component: Layout,
-    meta: { title: 'Ui', icon: 'el-icon-goods', single: false, roles: ['admin'] },
+    meta: { title: 'Ui', icon: 'el-icon-star-on', single: false, roles: ['admin'] },
     show: true,
     children: [
       {
-        path: 'pp',
+        path: 'button',
         component: () => import('@/pages/ui/component/Buttons'),
-        name: 'pp',
+        name: 'Button',
         show: true,
-        meta: { title: '按钮2', icon: 'el-icon-goods', roles: ['admin'] }
+        meta: { title: '按钮', roles: ['admin'] }
+      },
+      {
+        path: 'button',
+        component: () => import('@/pages/ui/component/Buttons'),
+        name: 'Button',
+        show: true,
+        meta: { title: '按钮2', roles: ['admin'] }
       }
     ]
   }
