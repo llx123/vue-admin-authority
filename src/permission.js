@@ -6,7 +6,8 @@ import 'nprogress/nprogress.css'
 import { getToken } from '@/utils/auth'
 
 const whiteList = ['/login']
-const hasPermission = (roles, permissionRoles) => {
+const hasPermission = (roles, permissionRoles, name) => {
+  if(!name) return false
   if(roles.some(item=> item==='admin') || !permissionRoles) return true
   return roles.some(role=>permissionRoles.indexOf(role)>=0)
 }
@@ -33,8 +34,8 @@ router.beforeEach((to, from, next) => {
           })
         })
       } else {
-        const { roles } = store.getters
-        if(hasPermission(roles,to.meta.roles)) {
+        const { roles } = store.getters        
+        if(hasPermission(roles,to.meta.roles,to.name)) {
           next()
         } else {
           next({ path: '/404', replace: true })
