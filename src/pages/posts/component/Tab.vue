@@ -55,7 +55,7 @@ export default {
     }, 500)
   },
   methods: {
-    handleClick(tab, event) {
+    handleClick() {
       this.$router.push({
         path: 'posts',
         query: {
