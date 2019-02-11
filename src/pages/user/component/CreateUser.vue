@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       ruleForm: {
-
+        age: 18
       },
       rules: {
         name: [
