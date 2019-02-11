@@ -7,8 +7,7 @@ import { getToken } from '@/utils/auth'
 
 const whiteList = ['/login']
 const hasPermission = (roles, permissionRoles) => {
-  if(roles.some(item=> item==='admin')) return true
-  if(!permissionRoles) return true
+  if(roles.some(item=> item==='admin') || !permissionRoles) return true
   return roles.some(role=>permissionRoles.indexOf(role)>=0)
 }
 // 增加全局的导航守卫
