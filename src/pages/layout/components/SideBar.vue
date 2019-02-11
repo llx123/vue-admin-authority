@@ -50,22 +50,22 @@ export default {
     
   },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
+    handleOpen() {
+      // console.log(key, keyPath);
     },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
+    handleClose() {
+      // console.log(key, keyPath);
     },
     changeCollapse() {
       this.$store.dispatch('toggleSideBar')
     },
-    changeTheme(v) {
+    changeTheme() {
       this.$store.dispatch('toggleTheme')
     }
   },
   watch: {
     opened: {
-      handler: function (val, oldVal) {
+      handler: function (val) {
         this.$emit('showBar',val); // watch 伸缩展开，通知父组件执行相关操作
       },
       immediate: true
