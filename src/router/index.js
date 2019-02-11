@@ -85,7 +85,7 @@ export const routeElimination = [ // 路由除权
   {
     path: '/ui',
     component: Layout,
-    meta: { title: 'Ui', icon: 'el-icon-star-on', single: false, roles: ['admin'] },
+    meta: { title: 'UI', icon: 'el-icon-star-on', single: false, roles: ['admin'] },
     show: true,
     children: [
       {
@@ -96,9 +96,9 @@ export const routeElimination = [ // 路由除权
         meta: { title: '按钮', roles: ['admin'] }
       },
       {
-        path: 'button',
+        path: 'button2',
         component: () => import('@/pages/ui/component/Buttons'),
-        name: 'Button',
+        name: 'Button2',
         show: true,
         meta: { title: '按钮2', roles: ['admin'] }
       }
