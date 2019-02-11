@@ -21,7 +21,8 @@
           <span>{{item.meta ? item.meta.title : ''}}</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item v-for="(p,i) in item.children" :key="i" :index="p.path" @click="doRouter(p.path?p.path:'')">{{p.meta ? p.meta.title : ''}}</el-menu-item>
+          <el-menu-item v-for="(p,i) in item.children" :key="i" :index="p.path"
+            @click="doRouter(p.path?item.path+'/'+p.path:'')">{{p.meta ? p.meta.title : ''}}</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </template>
@@ -55,7 +56,7 @@ export default {
     
   },
   methods: {
-    doRouter(path) {      
+    doRouter(path) {
       this.$router.push(path)
     }
   }
