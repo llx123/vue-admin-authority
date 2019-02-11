@@ -34,7 +34,7 @@ export const constantRouterMap = [
         component: () => import('@/pages/dashboard/index'),
         show: true,
         name: 'Dashboard',
-        meta: { title: 'dashboard', icon: 'el-icon-menu', noCache: true }
+        meta: { title: 'Dashboard', icon: 'el-icon-menu', noCache: true }
       },
       {
         path: '/404',
@@ -90,17 +90,17 @@ export const routeElimination = [ // 路由除权
     children: [
       {
         path: 'button',
-        component: () => import('@/pages/ui/component/Buttons'),
+        component: () => import('@/pages/ui/components/Buttons'),
         name: 'Button',
         show: true,
         meta: { title: '按钮', roles: ['admin'] }
       },
       {
         path: 'button2',
-        component: () => import('@/pages/ui/component/Buttons'),
+        component: () => import('@/pages/ui/components/Buttons'),
         name: 'Button2',
         show: true,
-        meta: { title: '按钮2', roles: ['admin'] }
+        meta: { title: '动画', roles: ['admin'] }
       }
     ]
   }
