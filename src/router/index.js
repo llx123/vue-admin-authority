@@ -79,5 +79,20 @@ export const routeElimination = [ // 路由除权
         meta: { title: 'Posts', icon: 'el-icon-goods', roles: ['admin'] }
       }
     ]
+  },
+  {
+    path: '/ui',
+    component: Layout,
+    meta: { title: 'Ui', icon: 'el-icon-goods', single: false, roles: ['admin'] },
+    show: true,
+    children: [
+      {
+        path: 'pp',
+        component: () => import('@/pages/ui/component/Buttons'),
+        name: 'pp',
+        show: true,
+        meta: { title: '按钮2', icon: 'el-icon-goods', roles: ['admin'] }
+      }
+    ]
   }
 ]
