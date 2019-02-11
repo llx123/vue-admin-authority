@@ -34,7 +34,11 @@ router.beforeEach((to, from, next) => {
           })
         })
       } else {
-        const { roles } = store.getters        
+        const { roles } = store.getters
+        /* 路由发生变化修改页面title */
+        if (to.meta.title) {
+          document.title = to.meta.title;
+        }
         if(hasPermission(roles,to.meta.roles,to.name)) {
           next()
         } else {
