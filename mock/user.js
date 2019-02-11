@@ -5,7 +5,7 @@ export default {
   },
   info: req => {
     const url = req.url
-    return {...req, username: url.match(/admin/g)?'admin':'guest', roles: ['admin']}
+    return {...req, username: url.match(/admin/g)?'admin':'guest', roles: url.match(/admin/g)?['admin']:['guest']}
   },
   logout: () => 'success'
 }
