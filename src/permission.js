@@ -33,20 +33,12 @@ router.beforeEach((to, from, next) => {
           })
         })
       } else {
-        const { roles } = store.getters        
-        console.log(roles,to.meta.roles)
+        const { roles } = store.getters
         if(hasPermission(roles,to.meta.roles)) {
           next()
         } else {
           next({ path: '/404', replace: true })
         }
-        // if (!hasPath) {
-        //   next({ path: '/404' })
-        //   NProgress.done()
-        //   return false  // 解决更改path空白页问题
-        // } else {
-        //   next()
-        // }
       }
     }
   } else {
