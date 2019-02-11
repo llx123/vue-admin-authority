@@ -1,19 +1,12 @@
 <template>
   <div v-if="item.show || item.children">
     <!-- 带子菜单 -->
-    <template v-if="item.children">
-      <template v-for="(p,i) in item.children" >
-        <!-- 需要展示子菜单 -->
-        <el-submenu :key="i" :index="path" v-if="p.show && !item.meta.single">
-          <template slot="title">
-            <i :class="p.meta?p.meta.icon:''"></i>
-            <span>{{p.meta ? p.meta.title : ''}}</span>
-          </template>
-        </el-submenu>
-        <!-- 不展示子菜单 -->
+    <template v-if="item.children">      
+      <!-- 不展示子菜单 -->
+      <template v-for="(p,i) in item.children">
         <el-menu-item :key="i"
           :index="path===''?p.path:path"
-          v-if="p.show && item.meta.single"
+          v-if="p.show && item.meta && item.meta.single"
           @click="doRouter(path===''?p.path:path)">
           <i :class="p.meta?p.meta.icon:''"></i>
           <span slot="title" class="menu-link">
@@ -21,6 +14,16 @@
           </span>
         </el-menu-item>
       </template>
+      <!-- 需要展示子菜单 -->
+      <el-submenu :index="path" v-if="item.meta && !item.meta.single">
+        <template slot="title">
+          <i :class="item.meta?item.meta.icon:''"></i>
+          <span>{{item.meta ? item.meta.title : ''}}</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item v-for="(p,i) in item.children" :key="i" :index="p.path" @click="doRouter(p.path?p.path:'')">{{p.meta ? p.meta.title : ''}}</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </template>
     <!-- 不带子菜单 -->
     <template v-else>
@@ -52,7 +55,7 @@ export default {
     
   },
   methods: {
-    doRouter(path) {
+    doRouter(path) {      
       this.$router.push(path)
     }
   }
