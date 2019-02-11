@@ -44,18 +44,20 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      layout="prev, pager, next"
-      :total="50">
-    </el-pagination>
+    <el-row type="flex" justify="center">
+      <el-pagination
+        layout="prev, pager, next"
+        :total="50">
+      </el-pagination>
+    </el-row>
   </section>
 </template>
 
 <script>
 export default {
   methods: {
-    handleClick(row) {
-      console.log(row);
+    handleClick() {
+      
     }
   },
   data() {
