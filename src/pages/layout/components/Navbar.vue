@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="left-menu">
       <a @click="changeCollapse">
-        {{opened?"展开":"收起"}}
+        <i :class="[opened ? 'el-icon-caret-right': 'el-icon-caret-left']" />
       </a>
     </div>
     <div class="right-menu">
@@ -28,7 +28,7 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-
+      
     }
   },
   computed: {

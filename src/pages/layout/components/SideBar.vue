@@ -3,7 +3,7 @@
     :style="!opened ? {flex: '0 0 200px', maxwidth: '200px', minwidth: '200px', width: '200px'} :
      {flex: '0 0 60px', maxwidth: '60px', minwidth: '60px', width: '60px'}">    
     <div class="brand-title"
-      @click="changeCollapse">{{ !opened?'A-BC':'BC' }}</div>
+      @click="changeCollapse">{{ !opened?'Vue-Admin':'Admin' }}</div>
     <div class="menu-container">
       <el-scrollbar>
         <el-menu 
