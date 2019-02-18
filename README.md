@@ -33,3 +33,8 @@ npm run test
 ```
 npm run lint
 ```
+
+### Dashboard
+<p align="center">
+  <img width="900" src="./public/images/dashboard.jpg">
+</p>
