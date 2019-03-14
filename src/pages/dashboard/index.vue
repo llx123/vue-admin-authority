@@ -195,6 +195,6 @@ export default {
 
 <style lang="postcss" scoped>
 .el-dashboard {
-  width: 100%
+  width: 100%;
 }
 </style>

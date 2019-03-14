@@ -12,6 +12,7 @@
 import { mapGetters } from 'vuex'
 
 import { Navbar, ContentMain, SideBar } from './components'
+
 export default {
   data() {
     return {

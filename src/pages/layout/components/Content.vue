@@ -6,11 +6,14 @@
           <router-view :key="key"/>
         </keep-alive>
       </transition>
+      <Bottom />
     </el-scrollbar>
   </section>
 </template>
 
 <script>
+import Footer from './Footer'
+
 export default {
   name: 'Content',
   computed: {
@@ -20,6 +23,9 @@ export default {
     key() {
       return this.$route.fullPath
     }
+  },
+  components: {
+    Bottom: Footer
   }
 }
 </script>
