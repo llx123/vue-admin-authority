@@ -97,7 +97,7 @@ export const routeElimination = [ // 路由除权
       },
       {
         path: 'animate',
-        component: () => import('@/pages/ui/components/Buttons'),
+        component: () => import('@/pages/ui/components/Animate'),
         name: 'Button2',
         show: true,
         meta: { title: '动画', roles: ['admin'] }
