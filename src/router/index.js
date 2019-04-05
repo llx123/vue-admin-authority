@@ -96,7 +96,7 @@ export const routeElimination = [ // 路由除权
         meta: { title: '按钮', roles: ['admin'] }
       },
       {
-        path: 'button2',
+        path: 'animate',
         component: () => import('@/pages/ui/components/Buttons'),
         name: 'Button2',
         show: true,
