@@ -1,5 +1,5 @@
 # vue-admin-authority
-
+#### (ui风格借鉴了antd-admin，仅供个人学习使用)
 ### 依赖模块
 <span style="color: rgb(184,49,47);">项目是用vue-cli 3.x创建的，[Vue CLI 3](https://cli.vuejs.org/).</span>
 - [vue](https://cn.vuejs.org/)
